@@ -11,34 +11,36 @@ namespace BookLibrary.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    /// <summary>
+    /// Model of book
+    /// </summary>
     public partial class book
     {
-        public int id { get; set; }
+        public int id { get; set; } /**< ID of book in database. Start at 1. Increment 1.*/
         [Required]
         [Display(Name = "Title")]
         [StringLength(50, ErrorMessage="Title must be lesser than 50 characters")]
-        public string title { get; set; }
+        public string title { get; set; }/**< Title of the book. 50 char max**/
         [Display(Name = "Author")]
         [StringLength(50, ErrorMessage = "Author must be lesser than 50 characters")]
-        public string author { get; set; }
+        public string author { get; set; }/**< Author of the book. 50 char max*/
         [Display(Name = "ISBN")]
         [RegularExpression(@"(^[0-9]{10}$)|(^[0-9]{13}$)", ErrorMessage ="ISBN is not correct")]
-        public string isbn { get; set; }
+        public string isbn { get; set; }/**< ISBN. 10 or 13 digits*/
         public string image { get; set; }
         [Display(Name = "Year")]
-        public Nullable<short> year { get; set; }
+        public Nullable<short> year { get; set; } /**< Year of publication*/
         [Display(Name = "Description")]
         [StringLength(1000, ErrorMessage = "Description must be lesser than 1000 characters")]
-        public string description { get; set; }
+        public string description { get; set; } /**< Description of book. 1000 char max*/
         [Display(Name = "Wishlist")]
-        public bool wishlist { get; set; }
+        public bool wishlist { get; set; } /**< If user want to read this book*/
         [Display(Name = "Read")]
-        public bool finish { get; set; }
+        public bool finish { get; set; } /**< If user read this book already*/
         [Display(Name = "Taken")]
-        public bool taken { get; set; }
+        public bool taken { get; set; } /**< If book was taken*/
         [Display(Name = "Rating")]
         [Range(1,5,ErrorMessage ="Rating must be integer number between 1 and 5")]
-        public string rating { get; set; }
+        public string rating { get; set; } /**< User's rating of book*/
     }
 }

@@ -211,6 +211,7 @@
     <Content Include="Models\books.edmx.diagram">
       <DependentUpon>books.edmx</DependentUpon>
     </Content>
+    <None Include="default.dox" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

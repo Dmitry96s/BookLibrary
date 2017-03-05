@@ -14,7 +14,14 @@ namespace BookLibrary.Controllers
     public class booksController : Controller
     {
         private BookLibraryEntities db = new BookLibraryEntities();
-
+        /// <summary>
+        /// Return View for displaying Books
+        /// </summary>
+        /// <param name="sortOrder"> Order of sorting. <field>_<direction>. For example: rating_asc, year_desc </param>
+        /// <param name="currentFilter"></param>
+        /// <param name="searchString">Search string. Search in "title" and "author" </param>
+        /// <param name="page">Number of page. 10 books per page.</param>
+        /// <returns>View Index</returns>
         // GET: books
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
@@ -73,7 +80,11 @@ namespace BookLibrary.Controllers
             int pageNumber = (page ?? 1);
             return View(books.ToPagedList(pageNumber, pageSize));
         }
-
+        /// <summary>
+        /// Return View with detailed iformation about Book
+        /// </summary>
+        /// <param name="id">ID of selected book</param> 
+        /// <returns>View Details</returns>
         // GET: books/Details/5
         public ActionResult Details(int? id)
         {
@@ -98,6 +109,11 @@ namespace BookLibrary.Controllers
         // POST: books/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Adding new book to library
+        /// </summary>
+        /// <param name="book"></param>
+        /// <returns>View Create</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,title,author,isbn,image,year,description,wishlist,finish,taken,rating")] book book)
@@ -120,7 +136,11 @@ namespace BookLibrary.Controllers
 
             return View(book);
         }
-
+        /// <summary>
+        /// Return view for editing information about book
+        /// </summary>
+        /// <param name="id">ID of selected book</param>
+        /// <returns>View Edit</returns>
         // GET: books/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -136,7 +156,11 @@ namespace BookLibrary.Controllers
             }
             return View(book);
         }
-
+        /// <summary>
+        /// Edit book in database
+        /// </summary>
+        /// <param name="book"></param>
+        /// <returns>View Index</returns>
         // POST: books/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -158,7 +182,12 @@ namespace BookLibrary.Controllers
             }
             return View(book);
         }
-
+        /// <summary>
+        /// Return view for deleting book
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="saveChangesError"></param>
+        /// <returns>View Delete</returns>
         // GET: books/Delete/5
         public ActionResult Delete(int? id, bool? saveChangesError = false)
         {
@@ -178,7 +207,11 @@ namespace BookLibrary.Controllers
             }
             return View(book);
         }
-
+        /// <summary>
+        /// Delete book from database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>View Index</returns>
         // POST: books/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
